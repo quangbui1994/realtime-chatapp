@@ -10,7 +10,7 @@
 }
 
 body {
-  font-family: Arial, 'Helvetica Neue', Helvetica, sans-serif;
+  font-family: 'Roboto', 'Helvetica Neue', Helvetica, sans-serif;
   font-size: 1.6rem
 }
 
@@ -33,6 +33,10 @@ button {
   cursor: pointer;
 }
 
+button:focus {
+  outline: none;
+}
+
 h1, h2, h3, h4, h5, h6 {
   margin: 0;
   font-size: inherit;
@@ -41,4 +45,8 @@ h1, h2, h3, h4, h5, h6 {
 
 p {
   margin:0;
+}
+
+input:focus {
+  outline: none;
 }
