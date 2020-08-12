@@ -4,6 +4,7 @@ import queryString from 'query-string';
 
 import styles from './Chat.module.css';
 import InfoBar from '../InfoBar/InfoBar';
+import Input from '../Input/Input';
 
 let socket;
 
@@ -48,11 +49,7 @@ const Chat = ({ location }) => {
         <div className={styles.OuterContainer}>
             <div className={styles.container}>
                 <InfoBar room={room}/>
-                {/* <input 
-                    value={message} 
-                    type="text"
-                    onChange={e => setMessage(e.target.value)}
-                    onKeyPress={e => e.key === 'Enter' ? sendMessage(e) : null}/> */}
+                <Input message={message} sendMessage={sendMessage} setMessage={setMessage}/>
             </div>
         </div>
     );
