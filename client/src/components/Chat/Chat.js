@@ -15,7 +15,11 @@ const Chat = ({ location }) => {
         socket = io(ENDPOINT);
         setName(name);
         setRoom(room);
-        console.log(name, room);
+        
+        return () => {
+            socket.emit('disconnect');
+            socket.off();
+        };
     }, [ENDPOINT, location.search]);
 
     return (
