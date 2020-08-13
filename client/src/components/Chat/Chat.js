@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import io from 'socket.io-client';
 import queryString from 'query-string';
+import { withRouter } from 'react-router-dom';
 
 import styles from './Chat.module.css';
 import InfoBar from '../InfoBar/InfoBar';
@@ -9,7 +10,7 @@ import Messages from '../Messages/Messages';
 
 let socket;
 
-const Chat = ({ location }) => {
+const Chat = ({ location, history }) => {
     const [name, setName] = useState('');
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
@@ -26,6 +27,7 @@ const Chat = ({ location }) => {
         socket.emit('join', { name, room }, (error) => {
             if (error) {
                 alert(error);
+                history.push('/');
             };
         });
         
@@ -59,4 +61,4 @@ const Chat = ({ location }) => {
     );
 };
 
-export default Chat;
+export default withRouter(Chat);

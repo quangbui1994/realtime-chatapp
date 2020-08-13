@@ -5,7 +5,7 @@ const addUser = ({ id, name, room }) => {
     room = room.trim().toLowerCase();
     const existingUser = users.find(user => user.name === name && user.room === room);
 
-    if (existingUser) return { error: 'User existed' };
+    if (existingUser) return { error: 'User is existed' };
 
     const user = { id, name, room };
     users.push(user);

@@ -9,6 +9,7 @@
   
 .joinInnerContainer {
     width: 20%;
+    position: relative;
 }
   
 .joinInput {
@@ -37,7 +38,13 @@
     border: none;
     width: 100%;
 }
-  
-.mt-20 {
-    margin-top: 20px;
+
+.error {
+    position: absolute;
+    bottom: -22px;
+    left: 0;
+    color: salmon;
+    font-family: inherit;
+    font-size: 1.2rem;
 }
+  

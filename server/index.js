@@ -5,10 +5,9 @@ const http = require('http');
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
-const router = require('./routes/route');
 const { addUser, removeUser, getUserById, getUsersInRoom } = require('./helpers');
 
-app.use(router);
+app.use(express.static('build'));
 
 // Socket.io setups
 io.on('connect', (socket) => {
