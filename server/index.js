@@ -1,13 +1,14 @@
 const express = require('express');
 const socketio = require('socket.io');
 const http = require('http');
+const path = require('path'); 
 
 const app = express();
 const server = http.createServer(app);
 const io = socketio(server);
 const { addUser, removeUser, getUserById, getUsersInRoom } = require('./helpers');
 
-app.use(express.static('build'));
+app.use(express.static('build'));  
 
 // Socket.io setups
 io.on('connect', (socket) => {
