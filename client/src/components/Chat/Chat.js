@@ -15,7 +15,7 @@ const Chat = ({ location, history }) => {
     const [room, setRoom] = useState('');
     const [message, setMessage] = useState('');
     const [messages, setMessages] = useState([]);
-    const ENDPOINT = 'localhost:4000';
+    const ENDPOINT = 'https://quang-realtime-chat-app.herokuapp.com/';
 
     useEffect(() => {
         const { name, room } = queryString.parse(location.search);
