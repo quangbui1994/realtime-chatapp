@@ -16,11 +16,13 @@ app.get('*', (req, res) => {
 
 // Socket.io setups
 io.on('connect', (socket) => {
+    // Socket receives the join keyword from client
     socket.on('join', ({ name, room }, callback) => {
         const { error, user } = addUser({ id: socket.id, name, room });
 
         if (error) return callback(error);
 
+        // Socket emits the welcome message to every users in the room and joined user
         socket.emit('message', { user: 'admin', text: `${user.name}, welcome to the room!` });
         socket.broadcast.to(user.room).emit('message', { user: 'admin', text: `${user.name} has joined!` });
 
@@ -29,9 +31,11 @@ io.on('connect', (socket) => {
         callback();
     });
 
+    // Socket receives the sendMessage keyword from client
     socket.on('sendMessage', (message, callback) => {
         const user = getUserById(socket.id);
 
+        // Socket emits the message from one user to others
         io.to(user.room).emit('message', { user: user.name, text: message });
 
         callback();

@@ -6,6 +6,9 @@ import styles from './Message.module.css';
 
 const upperCaseFirstLetter = text => text.charAt(0).toUpperCase() + text.slice(1);
 
+/**
+ * The function renders the messages based on the owner
+ */
 const Message = React.memo(({ message: { text, user }, name }) => {
   let isSentByCurrentUser = user === name.trim().toLowerCase();
 

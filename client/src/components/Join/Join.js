@@ -8,6 +8,10 @@ const Join = () => {
     const [room, setRoom] = useState('');
     const [error, setError] = useState('');
 
+    /**
+     * The function handle the error may occur during submit process
+     * @param {Object} e Submit event
+     */
     const errorHandler = e => {
         e.preventDefault();
         setError('You need to fill in the name and room');
