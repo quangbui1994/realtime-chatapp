@@ -8,7 +8,11 @@ const server = http.createServer(app);
 const io = socketio(server);
 const { addUser, removeUser, getUserById, getUsersInRoom } = require('./helpers');
 
-app.use(express.static('build'));  
+app.use(express.static('build'));
+
+app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'build/index.html'));
+});
 
 // Socket.io setups
 io.on('connect', (socket) => {
