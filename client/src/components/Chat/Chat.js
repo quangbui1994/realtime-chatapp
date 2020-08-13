@@ -5,6 +5,7 @@ import queryString from 'query-string';
 import styles from './Chat.module.css';
 import InfoBar from '../InfoBar/InfoBar';
 import Input from '../Input/Input';
+import Messages from '../Messages/Messages';
 
 let socket;
 
@@ -22,8 +23,10 @@ const Chat = ({ location }) => {
         setName(name);
         setRoom(room);
 
-        socket.emit('join', { name, room }, () => {
-
+        socket.emit('join', { name, room }, (error) => {
+            if (error) {
+                alert(error);
+            };
         });
         
         return () => {
@@ -34,9 +37,9 @@ const Chat = ({ location }) => {
 
     useEffect(() => {
         socket.on('message', message => {
-            setMessages([...messages, message]);
+            setMessages(messages => [...messages, message]);
         });
-    }, [messages]);
+    }, []);
 
     const sendMessage = e => {
         e.preventDefault();
@@ -49,6 +52,7 @@ const Chat = ({ location }) => {
         <div className={styles.OuterContainer}>
             <div className={styles.container}>
                 <InfoBar room={room}/>
+                <Messages messages={messages} name={name}/>
                 <Input message={message} sendMessage={sendMessage} setMessage={setMessage}/>
             </div>
         </div>
